@@ -24,18 +24,16 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'diminish)
-(require 'bind-key)
-
 ;;--+--+--+--+--+--+--+--+--+--+
 ;; Display Settings
 ;;--+--+--+--+--+--+--+--+--+--+
 
 ;; Character Sets
-;; (set-language-environment 'Japanese)
-;; (prefer-coding-system 'utf-8)
-;; (set-default-coding-systems 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
+;;(set-language-environment 'Japanese)
+;;(prefer-coding-system 'utf-8)
+;;(set-file-name-coding-system 'utf-8)
+;;(set-keyboard-coding-system 'utf-8)
+;;(set-terminal-coding-system 'utf-8)
 
 ;; WORKAROUND: multi-byte character input
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=23412
@@ -73,8 +71,8 @@
   (lambda ()
     (interactive)
     (menu-bar-mode 0)      ; No menu bar
-    (tool-bar-mode 0)      ; No tool bar
-    (scroll-bar-mode 0)))  ; No scroll bar
+    (tool-bar-mode 0)))      ; No tool bar
+;;   (scroll-bar-mode 0)))  ; No scroll bar
 
 ;; No startup message
 (setq inhibit-startup-message 1)
@@ -310,7 +308,7 @@
   :ensure t
   :init
   (setq markdown-command "multimarkdown") ; C-c C-c p
-  (setq markdown-open-command "~/.bin/mark") ; C-c C-c o
+  (setq markdown-open-command "~/.bin/typora") ; C-c C-c o
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -394,15 +392,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-  '(package-selected-packages
-     (quote
-       (color-theme-sanityinc-tomorrow-theme use-package markdown-mode ace-jump-mode))))
+ '(package-selected-packages
+   (quote
+    (color-theme-sanityinc-tomorrow-theme use-package markdown-mode ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-  )
+ )
 
 ;; Local Variables:
 ;; no-byte-compile: t

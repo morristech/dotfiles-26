@@ -15,7 +15,7 @@ function adb_fzf -d 'Execute adb command to interactive if multiple devices conn
         return 0
     end
 
-    if contains -- -d $argv or contains -- -e $argv or contains -- -s $argv
+    if contains -- -d $argv; or contains -- -e $argv; or contains -- -s $argv
         __adb_exec $argv
         return 0
     end
@@ -41,7 +41,7 @@ function __adb_device
 end
 
 function __adb_exec
-    command adb (string escape -- $argv)
+    command adb $argv
 end
 
 function __adb_exec_with_serial
@@ -49,7 +49,7 @@ function __adb_exec_with_serial
     if test -z $serial
         return 0
     end
-    command adb -s $serial (string escape -- $argv)
+    command adb -s $serial $argv
 end
 
 function __adb_screencapture
@@ -80,7 +80,7 @@ function __adb_screenrecord
     end
     set fpath (realpath ~/Desktop)
     argparse -s 'p/path=' 'g/gif' -- $argv
-    if set -q _flag_gif and not type -q ffmpeg
+    if set -q _flag_gif; and not type -q ffmpeg
         echo "ffmpeg: command not found" >&2
         return 1
     end
